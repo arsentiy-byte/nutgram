@@ -21739,6 +21739,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class L5Swagger extends \L5Swagger\L5SwaggerFacade {}
+            class Horizon extends \Laravel\Horizon\Horizon {}
     }
 
 

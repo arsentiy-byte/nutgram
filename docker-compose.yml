@@ -84,7 +84,6 @@ services:
             - redis
         volumes:
             - ./:/app
-            - ./docker/php/supervisord.conf:/etc/supervisord.conf
         environment:
             - CONTAINER_ROLE=worker
             - APP_ENV=${APP_ENV}

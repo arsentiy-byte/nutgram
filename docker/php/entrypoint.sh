@@ -20,7 +20,7 @@ case "$role" in
     worker)
         echo "Running the queue..."
 
-        exec /usr/bin/supervisord -n -c /etc/supervisord.conf
+        exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
         ;;
     *)
         echo "Could not match the container role \"$role\""
