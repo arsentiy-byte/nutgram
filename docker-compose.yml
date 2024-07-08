@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+    php:
+        container_name: ${APP_NAME}_php
+        user: app
+        build:
+            context: docker/php
+            dockerfile: Dockerfile
+            args:
+                WORKER_UID: ${WORKER_UID}
+                APP_ENV: ${APP_ENV}
+        expose:
+            - 9000
+        volumes:
+            - ./:/app:delegated
+        environment:
+            - CONTAINER_ROLE=php-fpm
+            - APP_ENV=${APP_ENV}
+        depends_on:
+            - database
+            - redis
+
+    redis:
+        container_name: ${APP_NAME}_redis
+        image: redis
+        ports:
+            - "${REDIS_PORT}:6379"
+        volumes:
+            - redis:/data
+        command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}" ]
+
+    nginx:
+        image: nginx:alpine
+        container_name: ${APP_NAME}_nginx
+        restart: always
+        volumes:
+            - ./:/app
+            - ./docker/nginx-rf/:/etc/nginx/conf.d/
+        ports:
+            - "${NGINX_PORT_HTTP}:80"
+            - "${NGINX_PORT_HTTPS}:443"
+        depends_on:
+            - php
+
+    database:
+        container_name: ${APP_NAME}_database
+        image: postgres
+        restart: always
+        ports:
+            - "${DB_PORT}:5432"
+        environment:
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_DATABASE}
+        volumes:
+            - ./docker/postgres/datadir:/var/lib/postgresql/data
+
+    scheduler:
+        build:
+            context: ./docker/php
+            dockerfile: Dockerfile
+            args:
+                WORKER_UID: ${WORKER_UID}
+        container_name: ${APP_NAME}_scheduler
+        depends_on:
+            - php
+        volumes:
+            - ./:/app
+        environment:
+            - CONTAINER_ROLE=scheduler
+            - APP_ENV=${APP_ENV}
+        restart: always
+
+    worker:
+        build:
+            context: ./docker/php
+            dockerfile: Dockerfile
+            args:
+                WORKER_UID: ${WORKER_UID}
+        container_name: ${APP_NAME}_worker
+        depends_on:
+            - php
+            - redis
+        volumes:
+            - ./:/app
+            - ./docker/php/supervisord.conf:/etc/supervisord.conf
+        environment:
+            - CONTAINER_ROLE=worker
+            - APP_ENV=${APP_ENV}
+        restart: always
+
+volumes:
+    redis:
+        driver: "local"

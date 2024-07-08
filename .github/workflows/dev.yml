@@ -1,0 +1,110 @@
+name: DEV CI
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Setting up CI environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Generate passport keys
+        run: php artisan passport:keys
+
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: Tar it up
+        run: tar -cvf setup.tar ./
+
+      - name: Upload setup artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: setup-artifact
+          path: setup.tar
+
+  pint:
+    name: Pint Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Setup Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: setup-artifact
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Extraction
+        run: tar -xvf setup.tar
+
+      - name: Running Pint
+        run: vendor/bin/pint --test --dirty --config pint.json
+
+  phpstan:
+    name: PHPStan Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Setup Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: setup-artifact
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Extraction
+        run: tar -xvf setup.tar
+
+      - name: Running Phpstan
+        run: vendor/bin/phpstan analyse -c phpstan.neon
+
+  testing:
+    name: Feature and Unit tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Setup Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: setup-artifact
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Extraction
+        run: tar -xvf setup.tar
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+        run: vendor/bin/phpunit

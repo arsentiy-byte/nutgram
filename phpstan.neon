@@ -1,0 +1,9 @@
+parameters:
+    level: 5
+    paths:
+        - app
+        - tests
+        - database
+        - routes
+    parallel:
+        maximumNumberOfProcesses: 4
