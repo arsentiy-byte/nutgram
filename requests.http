@@ -1,2 +1,5 @@
 ### API: Base
 GET http://localhost/api
+
+### API: Set telegram webhook manually
+https://api.telegram.org/bot{{ttoken}}/setWebhook?url={{expose_host}}/api/webhook
