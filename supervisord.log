@@ -1,0 +1,103 @@
+2024-07-08 11:08:37,261 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:08:37,262 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:08:37,266 INFO supervisord started with pid 1
+2024-07-08 11:08:38,271 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:08:38,797 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:08:39,799 INFO spawned: 'horizon_00' with pid 10
+2024-07-08 11:08:40,526 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:08:42,535 INFO spawned: 'horizon_00' with pid 13
+2024-07-08 11:08:43,074 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:08:46,095 INFO spawned: 'horizon_00' with pid 16
+2024-07-08 11:08:46,603 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:08:47,608 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:09:56,923 WARN received SIGQUIT indicating exit request
+2024-07-08 11:09:57,547 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:09:57,548 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:09:57,550 INFO supervisord started with pid 1
+2024-07-08 11:09:58,571 INFO spawned: 'horizon_00' with pid 12
+2024-07-08 11:09:59,122 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:10:00,130 INFO spawned: 'horizon_00' with pid 15
+2024-07-08 11:10:00,618 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:10:02,633 INFO spawned: 'horizon_00' with pid 18
+2024-07-08 11:10:03,097 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:10:06,122 INFO spawned: 'horizon_00' with pid 21
+2024-07-08 11:10:06,613 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:10:07,616 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:11:06,888 WARN received SIGQUIT indicating exit request
+2024-07-08 11:11:07,554 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:11:07,555 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:11:07,557 INFO supervisord started with pid 1
+2024-07-08 11:11:08,588 INFO spawned: 'horizon_00' with pid 12
+2024-07-08 11:11:09,202 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:11:10,215 INFO spawned: 'horizon_00' with pid 15
+2024-07-08 11:11:10,698 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:11:12,708 INFO spawned: 'horizon_00' with pid 18
+2024-07-08 11:11:13,202 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:11:16,224 INFO spawned: 'horizon_00' with pid 21
+2024-07-08 11:11:16,955 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:11:17,959 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:12:26,255 WARN received SIGQUIT indicating exit request
+2024-07-08 11:12:37,406 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:12:37,410 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:12:37,412 INFO supervisord started with pid 1
+2024-07-08 11:12:38,438 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:12:38,974 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:12:39,988 INFO spawned: 'horizon_00' with pid 10
+2024-07-08 11:12:40,518 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:12:42,543 INFO spawned: 'horizon_00' with pid 13
+2024-07-08 11:12:43,064 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:12:46,112 INFO spawned: 'horizon_00' with pid 16
+2024-07-08 11:12:46,738 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:12:47,753 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:12:57,792 WARN received SIGQUIT indicating exit request
+2024-07-08 11:13:08,729 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:13:08,730 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:13:08,741 INFO supervisord started with pid 1
+2024-07-08 11:13:09,774 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:13:10,319 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:11,327 INFO spawned: 'horizon_00' with pid 10
+2024-07-08 11:13:11,786 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:13,803 INFO spawned: 'horizon_00' with pid 13
+2024-07-08 11:13:14,354 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:17,387 INFO spawned: 'horizon_00' with pid 16
+2024-07-08 11:13:18,106 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:19,112 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:13:19,113 WARN received SIGQUIT indicating exit request
+2024-07-08 11:13:42,184 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:13:42,185 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:13:42,187 INFO supervisord started with pid 1
+2024-07-08 11:13:43,206 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:13:43,747 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:44,754 INFO spawned: 'horizon_00' with pid 10
+2024-07-08 11:13:45,281 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:47,305 INFO spawned: 'horizon_00' with pid 19
+2024-07-08 11:13:47,824 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:50,842 INFO spawned: 'horizon_00' with pid 24
+2024-07-08 11:13:51,350 WARN exited: horizon_00 (exit status 1; not expected)
+2024-07-08 11:13:52,355 INFO gave up: horizon_00 entered FATAL state, too many start retries too quickly
+2024-07-08 11:18:24,734 WARN received SIGQUIT indicating exit request
+2024-07-08 11:19:58,303 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:19:58,304 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:19:58,310 INFO supervisord started with pid 1
+2024-07-08 11:19:59,317 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:20:00,322 INFO success: horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-08 11:22:33,211 WARN received SIGQUIT indicating exit request
+2024-07-08 11:22:33,226 INFO waiting for horizon_00 to die
+2024-07-08 11:22:36,245 INFO waiting for horizon_00 to die
+2024-07-08 11:22:39,264 INFO waiting for horizon_00 to die
+2024-07-08 11:22:42,285 INFO waiting for horizon_00 to die
+2024-07-08 11:22:44,301 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:22:44,302 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:22:44,305 INFO supervisord started with pid 1
+2024-07-08 11:22:45,387 INFO spawned: 'horizon_00' with pid 6
+2024-07-08 11:22:47,240 INFO success: horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-08 11:24:01,578 WARN received SIGQUIT indicating exit request
+2024-07-08 11:24:01,585 INFO waiting for horizon_00 to die
+2024-07-08 11:24:04,610 INFO waiting for horizon_00 to die
+2024-07-08 11:24:07,622 INFO waiting for horizon_00 to die
+2024-07-08 11:24:10,639 INFO waiting for horizon_00 to die
+2024-07-08 11:24:12,077 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-08 11:24:12,078 INFO Included extra file "/etc/supervisor/conf.d/horizon.conf" during parsing
+2024-07-08 11:24:12,079 INFO supervisord started with pid 1
+2024-07-08 11:24:13,093 INFO spawned: 'horizon_00' with pid 7
+2024-07-08 11:24:14,563 INFO success: horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
