@@ -6,3 +6,4 @@
 - [Линтеры](docs/lints.md)
 - [Тесты](docs/tests.md)
 - [API Документация Swagger](docs/swagger.md)
+- [Запуск Webhook локально](docs/run.md)
