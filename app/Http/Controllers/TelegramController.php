@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use SergiX44\Nutgram\Nutgram;
-use SergiX44\Nutgram\RunningMode\Webhook;
 
 final class TelegramController extends Controller
 {
@@ -18,7 +17,6 @@ final class TelegramController extends Controller
      */
     public function __invoke(Nutgram $bot): void
     {
-        $bot->setRunningMode(Webhook::class);
         $bot->run();
     }
 }
