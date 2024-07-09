@@ -35,3 +35,10 @@ test:
 
 swagger:
 	- docker-compose -f docker-compose.yml exec php php artisan l5-swagger:generate
+
+polling:
+	- docker-compose -f docker-compose.yml exec php php artisan nutgram:hook:remove -d
+	- docker-compose -f docker-compose.yml exec php php artisan nutgram:run
+
+set-webhook:
+	- docker-compose -f docker-compose.yml exec php php artisan nutgram:hook:set $(host)/api/webhook
