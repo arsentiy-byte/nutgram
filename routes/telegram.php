@@ -2,24 +2,17 @@
 
 /** @var Nutgram $bot */
 
-use Nutgram\Laravel\Middleware\ValidateWebAppData;
+use App\Telegram\Handlers\OnMessageHandler;
+use App\Telegram\Handlers\OnUpdateHandler;
+use App\Telegram\Middleware\OnStartCommandMiddleware;
 use SergiX44\Nutgram\Nutgram;
-use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Nutgram Handlers
-|--------------------------------------------------------------------------
-|
-| Here is where you can register telegram handlers for Nutgram. These
-| handlers are loaded by the NutgramServiceProvider. Enjoy!
-|
-*/
+$bot->onUpdate(OnUpdateHandler::class);
+$bot->onMessage(OnMessageHandler::class);
 
-$bot->onCommand('start', function (Nutgram $bot): void {
-    $bot->sendMessage('Hello, world!');
-})->description('The start command!');
-
-Route::middleware(ValidateWebAppData::class)->group(function (): void {
-    // your routes here
-});
+$bot
+    ->onCommand('start', function (Nutgram $bot): void {
+        $bot->sendMessage('Hello, world!');
+    })
+    ->description('The start command!')
+    ->middleware(OnStartCommandMiddleware::class);

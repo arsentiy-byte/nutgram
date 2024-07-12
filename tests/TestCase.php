@@ -13,7 +13,6 @@ use RuntimeException;
 abstract class TestCase extends BaseTestCase
 {
     use ConfigTrait;
-    use CreatesApplication;
     use DatabaseMigrations;
     use WithFaker;
 
@@ -22,7 +21,10 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if ( ! $this->isTestingEnvironment()) {
-            throw new RuntimeException('Конфиги указаны неправильно, попробуйте почистить кэш');
+            throw new RuntimeException('The configs are incorrect, try clearing the cache');
         }
+
+        $this->runDatabaseMigrations();
+        $this->seed();
     }
 }

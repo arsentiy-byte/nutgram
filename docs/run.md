@@ -1,5 +1,6 @@
-# Запуск и установка Webhook локально
+# Запуск приложения локально для работы с Telegram Bot API
 
+## В режиме Webhook
 > Используется [Expose](https://expose.dev/) - expose local sites via secure tunnels
 >
 > Открывается публичный доступ к локальному приложению и регистрируется **webhook** для Telegram Bot API
@@ -10,10 +11,9 @@
 2. Установка Expose на локальную среду: `composer global require beyondcode/expose`
 3. Аутентификация для expose: `expose token {{token}}` - **token** генерирует сам Expose
 4. Открываем доступ: `expose share http://localhost`
-5. Открываем файл [requests.http](../requests.http)
-6. Открываем настройка переменных окружения:
-![img.png](run/requests_env.png)
-7. Задаем значения для дальнейших запросов
-![img.png](run/requests_env_set.png)
-8. Отправляем запрос в Telegram Bot API для регистрации webhook: `https://api.telegram.org/bot{{ttoken}}/setWebhook?url={{expose_host}}/api/webhook`
-9. Тестируем телеграм бот
+5. Выполняем команду `make set-webhook host={host}` - напр: `make set-webhook host=https://nutgram.com`
+
+## В режиме Polling
+> Используется Polling метод - приложение идет в Telegram Bot API сам и получает обновления
+
+Для этого выполняем команду `make polling` 
