@@ -8,7 +8,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use SergiX44\Nutgram\Nutgram;
 
-final class TelegramController extends Controller
+final class WebhookController extends Controller
 {
     /**
      * Handle the telegram webhook request.
