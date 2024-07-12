@@ -2,16 +2,23 @@
 
 declare(strict_types=1);
 
+use App\Traits\ConfigTrait;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
+    use ConfigTrait;
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
+        if ( ! $this->isTestingEnvironment()) {
+            return;
+        }
+
         Schema::create('jobs', static function (Blueprint $table): void {
             $table->id();
             $table->string('queue')->index();
@@ -51,6 +58,10 @@ return new class () extends Migration {
      */
     public function down(): void
     {
+        if ( ! $this->isTestingEnvironment()) {
+            return;
+        }
+
         Schema::dropIfExists('jobs');
         Schema::dropIfExists('job_batches');
         Schema::dropIfExists('failed_jobs');

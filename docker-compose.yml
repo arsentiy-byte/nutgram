@@ -9,14 +9,12 @@ services:
             dockerfile: Dockerfile
             args:
                 WORKER_UID: ${WORKER_UID}
-                APP_ENV: ${APP_ENV}
         expose:
             - 9000
         volumes:
             - ./:/app:delegated
         environment:
             - CONTAINER_ROLE=php-fpm
-            - APP_ENV=${APP_ENV}
         depends_on:
             - database
             - redis
@@ -69,7 +67,6 @@ services:
             - ./:/app
         environment:
             - CONTAINER_ROLE=scheduler
-            - APP_ENV=${APP_ENV}
         restart: always
 
     worker:
@@ -86,7 +83,6 @@ services:
             - ./:/app
         environment:
             - CONTAINER_ROLE=worker
-            - APP_ENV=${APP_ENV}
         restart: always
 
 volumes:

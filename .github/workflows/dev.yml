@@ -1,8 +1,6 @@
 name: DEV CI
 
 on:
-  push:
-    branches: [ dev ]
   pull_request:
     branches: [ main ]
 
@@ -86,6 +84,20 @@ jobs:
     name: Feature and Unit tests
     runs-on: ubuntu-latest
     needs: build
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: nutgram_test
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Download Setup Artifact
         uses: actions/download-artifact@v3
@@ -103,5 +115,10 @@ jobs:
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
           APP_ENV: testing
-          DB_CONNECTION: sqlite
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: nutgram_test
+          DB_USERNAME: admin
+          DB_PASSWORD: admin
         run: vendor/bin/phpunit
