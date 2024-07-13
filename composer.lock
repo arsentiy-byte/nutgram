@@ -4,8 +4,73 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81e16bf3b681a1502d3c56cc51769969",
+    "content-hash": "788817bd8d6605c68fcf089ac32f3176",
     "packages": [
+        {
+            "name": "ahmedabdelaal/filament-json-preview",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ahmedabdel3al/filament-json-preview.git",
+                "reference": "356f51fdf80c9a6af3bf4433aea143c974d88256"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ahmedabdel3al/filament-json-preview/zipball/356f51fdf80c9a6af3bf4433aea143c974d88256",
+                "reference": "356f51fdf80c9a6af3bf4433aea143c974d88256",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "filament/forms": "^3.0",
+                "illuminate/contracts": "^10.0|^11.0",
+                "php": "^8.1|^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9|^8.1",
+                "phpstan/extension-installer": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AhmedAbdelaal\\FilamentJsonPreview\\FilamentJsonPreviewServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AhmedAbdelaal\\FilamentJsonPreview\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Abdelaal",
+                    "email": "ahmedabdelaal1921@gmail.com"
+                }
+            ],
+            "description": "Preview Json In Formatted Way",
+            "homepage": "https://github.com/ahmedabdelaal/filament-json-preview",
+            "keywords": [
+                "entry",
+                "field",
+                "filament",
+                "filament-json-preview",
+                "json",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ahmedabdelaal/filament-json-preview/issues",
+                "source": "https://github.com/ahmedabdelaal/filament-json-preview"
+            },
+            "time": "2024-05-30T08:52:53+00:00"
+        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.2.23",

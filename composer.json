@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ahmedabdelaal/filament-json-preview": "^1.0",
         "awcodes/filament-curator": "^3.6",
         "bezhansalleh/filament-shield": "^3.2",
         "darkaonline/l5-swagger": "^8.6",

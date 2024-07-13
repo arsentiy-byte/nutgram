@@ -39,4 +39,5 @@ return [
     'user_id' => 'ID пользователя',
     'chat_id' => 'ID чата',
     'chat_name' => 'Название чата',
+    'message_id' => 'ID сообщения',
 ];
