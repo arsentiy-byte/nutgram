@@ -68,6 +68,7 @@ final class ActivityLogResource extends Resource
                         TextEntry::make('causer.log_panel_name')
                             ->label(__('filament::resources/pages/form-element.causer'))
                             ->badge()
+                            ->hidden(fn (Activity $record): bool => null === $record->causer_id)
                             ->url(fn (Activity $record) => UserResource::getUrl('edit', ['record' => $record->causer_id])),
                         TextEntry::make('subject.log_panel_name')
                             ->label(__('filament::resources/pages/form-element.subject'))
@@ -102,8 +103,7 @@ final class ActivityLogResource extends Resource
                             ->label('')
                             ->hidden(function (Activity $record) {
                                 return null !== $record->properties
-                                    && $record->properties->has('attributes')
-                                    && $record->properties->has('old');
+                                    && ($record->properties->has('attributes') || $record->properties->has('old'));
                             }),
                         KeyValueEntry::make('properties.attributes')
                             ->label(__('filament::resources/pages/form-element.new_values'))

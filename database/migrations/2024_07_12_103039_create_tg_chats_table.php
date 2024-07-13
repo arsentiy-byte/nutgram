@@ -14,6 +14,8 @@ return new class () extends Migration {
     {
         Schema::create('tg_chats', static function (Blueprint $table): void {
             $table->unsignedBigInteger('chat_id')->primary();
+            $table->string('type')->index();
+            $table->string('username')->nullable();
             $table->json('data');
             $table->timestamps();
         });

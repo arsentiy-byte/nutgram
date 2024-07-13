@@ -12,6 +12,8 @@ use SergiX44\Nutgram\Telegram\Types\Chat\Chat as ChatType;
 
 /**
  * @property int $chat_id
+ * @property string $type
+ * @property string|null $username
  * @property array $data
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -39,6 +41,8 @@ final class Chat extends Model
      */
     protected $fillable = [
         'chat_id',
+        'type',
+        'username',
         'data',
     ];
 
@@ -61,6 +65,8 @@ final class Chat extends Model
         $self = self::query()
             ->updateOrCreate([
                 'chat_id' => $chat->id,
+                'type' => $chat->type,
+                'username' => $chat->username,
             ], [
                 'data' => $chat->toArray(),
             ]);
