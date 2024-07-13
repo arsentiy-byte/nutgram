@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use SergiX44\Nutgram\Telegram\Types\User\User as UserType;
 
 /**
  * @property int $user_id
@@ -55,6 +56,26 @@ final class User extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    /**
+     * @param UserType $user
+     * @return self
+     */
+    public static function updateOrCreateFromType(UserType $user): self
+    {
+        /** @var self $self */
+        $self = self::query()
+            ->updateOrCreate([
+                'user_id' => $user->id,
+            ], [
+                'username' => $user->id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'data' => $user->toArray(),
+            ]);
+
+        return $self;
+    }
 
     /**
      * @return HasMany

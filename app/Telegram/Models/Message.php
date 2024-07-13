@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Telegram\Models;
 
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use SergiX44\Nutgram\Telegram\Types\Message\Message as MessageType;
 
 /**
  * @property int $message_id
@@ -58,6 +60,26 @@ final class Message extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    /**
+     * @param MessageType $message
+     * @return self
+     */
+    public static function updateOrCreateFromType(MessageType $message): self
+    {
+        /** @var self $self */
+        $self = self::query()->updateOrCreate([
+            'message_id' => $message->message_id,
+        ], [
+            'from_id' => $message->from->id,
+            'chat_id' => $message->chat->id,
+            'text' => $message->text,
+            'date' => CarbonImmutable::createFromTimestamp($message->date),
+            'data' => $message->toArray(),
+        ]);
+
+        return $self;
+    }
 
     /**
      * @return BelongsTo

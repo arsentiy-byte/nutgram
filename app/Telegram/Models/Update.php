@@ -6,6 +6,7 @@ namespace App\Telegram\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use SergiX44\Nutgram\Telegram\Types\Common\Update as UpdateType;
 
 /**
  * @property int $update_id
@@ -45,4 +46,20 @@ final class Update extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    /**
+     * @param UpdateType $update
+     * @return self
+     */
+    public static function updateOrCreateFromType(UpdateType $update): self
+    {
+        /** @var self $self */
+        $self = self::query()->updateOrCreate([
+            'update_id' => $update->update_id,
+        ], [
+            'data' => $update->toArray(),
+        ]);
+
+        return $self;
+    }
 }

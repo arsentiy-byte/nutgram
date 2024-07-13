@@ -4,23 +4,13 @@ declare(strict_types=1);
 
 namespace App\Telegram\Middleware;
 
-use App\Telegram\Middleware\Handlers\ProcessChatDataHandler;
-use App\Telegram\Middleware\Handlers\ProcessUserDataHandler;
+use App\Telegram\Models\Chat;
+use App\Telegram\Models\User;
 use Psr\SimpleCache\InvalidArgumentException;
 use SergiX44\Nutgram\Nutgram;
 
 final readonly class OnStartCommandMiddleware
 {
-    /**
-     * @param ProcessUserDataHandler $userDataHandler
-     * @param ProcessChatDataHandler $chatDataHandler
-     */
-    public function __construct(
-        private ProcessUserDataHandler $userDataHandler,
-        private ProcessChatDataHandler $chatDataHandler,
-    ) {
-    }
-
     /**
      * @param Nutgram $bot
      * @param $next
@@ -30,11 +20,11 @@ final readonly class OnStartCommandMiddleware
     public function __invoke(Nutgram $bot, $next): void
     {
         if (null !== $bot->user()) {
-            $this->userDataHandler->handle($bot->user());
+            User::updateOrCreateFromType($bot->user());
         }
 
         if (null !== $bot->chat()) {
-            $this->chatDataHandler->handle($bot->chat());
+            Chat::updateOrCreateFromType($bot->chat());
         }
 
         $next($bot);
