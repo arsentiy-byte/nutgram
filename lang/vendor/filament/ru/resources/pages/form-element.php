@@ -40,4 +40,5 @@ return [
     'chat_id' => 'ID чата',
     'chat_name' => 'Название чата',
     'message_id' => 'ID сообщения',
+    'update_id' => 'ID обновления',
 ];
