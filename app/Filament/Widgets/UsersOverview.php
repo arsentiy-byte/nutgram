@@ -16,7 +16,7 @@ final class UsersOverview extends BaseWidget
     protected static ?string $pollingInterval = null;
 
     /**
-     * @return array|Stat[]
+     * @return array<int, Stat>
      */
     protected function getCards(): array
     {
@@ -29,7 +29,7 @@ final class UsersOverview extends BaseWidget
             ->count();
 
         return [
-            Stat::make('Количество пользователей', User::query()->count())
+            Stat::make('Количество пользователей бота', User::query()->count())
                 ->description('За все время')
                 ->descriptionIcon('heroicon-s-user-group')
                 ->icon('heroicon-s-user')

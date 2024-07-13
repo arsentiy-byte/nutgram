@@ -15,7 +15,7 @@ final class UsersChart extends ChartWidget
 {
     public ?string $filter = 'week';
 
-    protected static ?string $heading = 'Статистика пользователей';
+    protected static ?string $heading = 'Статистика пользователей бота';
 
     protected static ?string $pollingInterval = null;
 

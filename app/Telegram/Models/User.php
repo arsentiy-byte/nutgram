@@ -18,6 +18,7 @@ use SergiX44\Nutgram\Telegram\Types\User\User as UserType;
  * @property array $data
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property-read string|null $full_name
  * @property-read Collection|array<array-key, Message> $messages
  */
 final class User extends Model
@@ -68,7 +69,7 @@ final class User extends Model
             ->updateOrCreate([
                 'user_id' => $user->id,
             ], [
-                'username' => $user->id,
+                'username' => $user->username,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
                 'data' => $user->toArray(),
@@ -83,5 +84,25 @@ final class User extends Model
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'from_id', 'user_id');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFullNameAttribute(): ?string
+    {
+        if (null === $this->first_name && null === $this->last_name) {
+            return null;
+        }
+
+        if (null === $this->first_name) {
+            return $this->last_name;
+        }
+
+        if (null === $this->last_name) {
+            return $this->first_name;
+        }
+
+        return sprintf('%s %s', $this->first_name, $this->last_name);
     }
 }

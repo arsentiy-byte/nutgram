@@ -20,4 +20,8 @@ return [
 
     ],
 
+    'menu' => [
+        'settings' => 'Settings',
+        'telegram' => 'Telegram',
+    ],
 ];

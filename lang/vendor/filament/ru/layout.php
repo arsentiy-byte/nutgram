@@ -22,5 +22,6 @@ return [
 
     'menu' => [
         'settings' => 'Настройки',
+        'telegram' => 'Телеграм',
     ]
 ];
